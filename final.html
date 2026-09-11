@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una última cosa 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="comun.css">
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <div id="corazones" aria-hidden="true"></div>
+  <canvas id="confeti" aria-hidden="true"></canvas>
+
+  <main>
+    <!-- 1. Intro -->
+    <section class="pantalla activa" id="intro">
+      <div class="sobre" aria-hidden="true">💌</div>
+      <h1 class="titulo">Una última cosa...</h1>
+      <p class="subtitulo">Tengo algo que decirte, <span data-nombre></span></p>
+      <button class="boton" id="btn-abrir">Dime 🙈</button>
+    </section>
+
+    <!-- 2. Mensajes -->
+    <section class="pantalla" id="mensajes">
+      <p class="mensaje" id="texto-mensaje"></p>
+      <p class="pista" id="pista">toca para continuar</p>
+    </section>
+
+    <!-- 3. Fotos -->
+    <section class="pantalla" id="fotos">
+      <h2 class="titulo">Nuestros momentos</h2>
+      <div class="galeria" id="galeria"></div>
+      <button class="boton" id="btn-fotos">Continuar</button>
+    </section>
+
+    <!-- 4. Cosas bonitas -->
+    <section class="pantalla" id="bonitas">
+      <div class="contenido">
+        <h1 class="titulo" id="titulo-bonitas"></h1>
+        <p class="subtitulo">Toca cada tarjeta 💌</p>
+        <div class="tarjetas" id="tarjetas"></div>
+        <button class="boton" id="btn-ultima" hidden>Una última cosa... ✨</button>
+      </div>
+    </section>
+
+    <!-- 5. Final -->
+    <section class="pantalla" id="final">
+      <div class="emoji-grande latido" aria-hidden="true">💖</div>
+      <h1 class="titulo" id="titulo-final"></h1>
+      <p class="mensaje-final" id="mensaje-final"></p>
+      <p class="firma" id="firma"></p>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+  <script src="final.js"></script>
+</body>
+</html>

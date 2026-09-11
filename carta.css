@@ -1,0 +1,254 @@
+/* La carta (index.html). Lo general está en comun.css */
+
+main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+}
+
+/* ---------- Escena del sobre ---------- */
+.escena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  text-align: center;
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.escena.saliendo {
+  opacity: 0;
+  transform: translateY(40px) scale(.92);
+}
+
+.pista-sobre {
+  font-weight: 600;
+  color: var(--texto-suave);
+  animation: respirar 2s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  50% { opacity: .45; }
+}
+
+.sobre {
+  --ancho: min(80vw, 360px);
+  position: relative;
+  width: var(--ancho);
+  height: calc(var(--ancho) * .64);
+  margin-top: 2rem; /* espacio para cuando la carta sale por arriba */
+  cursor: pointer;
+  perspective: 900px;
+  filter: drop-shadow(0 18px 28px rgba(91, 35, 56, .18));
+  animation: flotar 3.2s ease-in-out infinite;
+  outline: none;
+}
+
+.sobre:focus-visible {
+  outline: 3px solid var(--rosa);
+  outline-offset: 10px;
+  border-radius: 12px;
+}
+
+.sobre.abierto {
+  animation: none;
+  cursor: default;
+}
+
+@keyframes flotar {
+  50% { transform: translateY(-10px) rotate(-1.5deg); }
+}
+
+.sobre-atras {
+  position: absolute;
+  inset: 0;
+  background: #f4a7bb;
+  border-radius: 10px;
+}
+
+.carta-mini {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 6%;
+  height: 88%;
+  z-index: 2;
+  background: #fffaf3;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 13px, rgba(214, 51, 108, .15) 13px 14px);
+  border-radius: 6px;
+  transition: transform 1s cubic-bezier(.2, .8, .2, 1) .9s;
+}
+
+.sobre.abierto .carta-mini {
+  transform: translateY(-62%);
+}
+
+.sobre-frente {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 7%;
+  background: linear-gradient(160deg, #ffd1dc, #ffb8ca);
+  border-radius: 10px;
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+}
+
+.para {
+  font-family: 'Dancing Script', 'Segoe Script', cursive;
+  font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+}
+
+.sobre-solapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56%;
+  z-index: 4;
+  background: linear-gradient(180deg, #ffc2d1, #ffabc0);
+  border-radius: 10px 10px 0 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  /* a la mitad del giro se va detrás de la carta */
+  transition: transform .8s ease .25s, z-index 0s linear .65s;
+}
+
+.sobre.abierto .sobre-solapa {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.sello {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: clamp(2.5rem, 12vw, 3.3rem);
+  height: clamp(2.5rem, 12vw, 3.3rem);
+  background: radial-gradient(circle at 35% 35%, #ff7aa2, #d6336c);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(214, 51, 108, .4);
+  transform: translate(-50%, -50%);
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+.sobre.abierto .sello {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0) rotate(45deg);
+}
+
+/* ---------- La carta ---------- */
+/* Todo va en múltiplos de 2rem para que el texto quede sobre los renglones */
+.carta {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  padding: 2rem clamp(1.4rem, 5vw, 3rem) 2rem;
+  font-family: 'Caveat', 'Segoe Print', cursive;
+  font-size: clamp(1.4rem, 4.4vw, 1.65rem);
+  font-weight: 500;
+  line-height: 2rem;
+  color: #4a2a36;
+  background-color: #fffaf3;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(2rem - 1px),
+    rgba(214, 51, 108, .13) calc(2rem - 1px) 2rem
+  );
+  border-radius: 6px;
+  box-shadow: 0 20px 50px rgba(91, 35, 56, .16);
+  cursor: pointer;
+  animation: desplegar .9s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.carta.terminada { cursor: default; }
+
+/* Cinta adhesiva de arriba */
+.carta::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 120px;
+  height: 30px;
+  background: rgba(255, 143, 171, .55);
+  border-radius: 3px;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+@keyframes desplegar {
+  from { opacity: 0; transform: translateY(60px) scale(.9); }
+}
+
+.carta-saludo {
+  font-family: 'Dancing Script', 'Segoe Script', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+  margin-bottom: 2rem;
+}
+
+.carta-cuerpo p { margin-bottom: 2rem; }
+
+.carta-firma {
+  font-family: 'Dancing Script', 'Segoe Script', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: right;
+  color: var(--rosa-oscuro);
+  margin-top: 2rem;
+}
+
+/* Lo que falta por escribir ocupa su lugar pero no se ve (así la carta no "brinca") */
+.pendiente { visibility: hidden; }
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  margin-right: -2px;
+  vertical-align: -.2em;
+  background: var(--rosa);
+  animation: parpadeo 1s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+  50% { opacity: 0; }
+}
+
+.carta-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  font-family: 'Quicksand', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.pista-carta {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+#btn-continuar {
+  animation: desplegar .6s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre, .pista-sobre, .carta, #btn-continuar { animation: none; }
+}

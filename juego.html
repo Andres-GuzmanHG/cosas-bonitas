@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto me conoces? 🎮</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="comun.css">
+  <link rel="stylesheet" href="juego.css">
+</head>
+<body>
+  <div id="corazones" aria-hidden="true"></div>
+
+  <main>
+    <!-- Inicio -->
+    <section class="vista" id="inicio">
+      <div class="emoji-grande flotando" aria-hidden="true">🎮</div>
+      <h1 class="titulo" id="titulo-juego"></h1>
+      <p class="subtitulo" id="subtitulo-juego"></p>
+      <button class="boton" id="btn-jugar">Jugar</button>
+    </section>
+
+    <!-- Preguntas -->
+    <section class="vista" id="juego" hidden>
+      <div class="marcador">
+        <p class="progreso" id="progreso"></p>
+        <div class="vidas" id="vidas" aria-hidden="true"></div>
+      </div>
+
+      <div class="tarjeta-pregunta" id="tarjeta">
+        <h2 class="pregunta" id="pregunta"></h2>
+        <div class="opciones" id="opciones"></div>
+        <div class="reaccion" id="reaccion" hidden aria-live="polite">
+          <p class="reaccion-titulo" id="reaccion-titulo"></p>
+          <p class="reaccion-dato" id="reaccion-dato"></p>
+        </div>
+      </div>
+
+      <button class="boton" id="btn-siguiente" hidden>Siguiente →</button>
+    </section>
+
+    <!-- Resultado -->
+    <section class="vista" id="resultado" hidden>
+      <div class="emoji-grande latido" id="emoji-resultado" aria-hidden="true"></div>
+      <p class="subtitulo">Tu puntuación</p>
+      <p class="puntaje" id="puntaje"></p>
+      <div class="vidas vidas-grandes" id="vidas-final" aria-hidden="true"></div>
+      <p class="mensaje-resultado" id="mensaje-resultado"></p>
+      <p class="cierre-juego" id="cierre-juego"></p>
+      <div class="acciones">
+        <a class="boton" href="final.html">Continuar 💌</a>
+        <button class="boton-secundario" id="btn-otra-vez">Jugar otra vez</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+  <script src="juego.js"></script>
+</body>
+</html>

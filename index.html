@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienes una carta 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="comun.css">
+  <link rel="stylesheet" href="carta.css">
+</head>
+<body>
+  <div id="corazones" aria-hidden="true"></div>
+
+  <main id="principal">
+    <!-- El sobre -->
+    <section class="escena" id="escena">
+      <p class="etiqueta">Tienes una carta nueva</p>
+
+      <div class="sobre" id="sobre" role="button" tabindex="0" aria-label="Abrir la carta">
+        <div class="sobre-atras"></div>
+        <div class="carta-mini" aria-hidden="true"></div>
+        <div class="sobre-frente">
+          <p class="para">Para <span data-nombre></span></p>
+        </div>
+        <div class="sobre-solapa"></div>
+        <div class="sello" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#fff" d="M12 21s-7.5-4.6-10-9.3C.4 8.3 2.4 4 6.3 4c2.2 0 3.7 1.3 4.7 2.7C12 5.3 13.5 4 15.7 4 19.6 4 21.6 8.3 20 11.7 17.5 16.4 12 21 12 21z"/></svg>
+        </div>
+      </div>
+
+      <p class="pista-sobre">Toca el sobre para abrirla</p>
+    </section>
+
+    <!-- La carta completa -->
+    <article class="carta" id="carta" hidden>
+      <p class="carta-saludo" id="carta-saludo"></p>
+      <div class="carta-cuerpo" id="carta-cuerpo"></div>
+      <p class="carta-despedida" id="carta-despedida"></p>
+      <p class="carta-firma" id="carta-firma"></p>
+
+      <div class="carta-acciones">
+        <p class="pista-carta" id="pista-carta">toca la carta para verla completa</p>
+        <a class="boton" id="btn-continuar" href="juego.html" hidden>Continuar ✨</a>
+      </div>
+    </article>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="comun.js"></script>
+  <script src="carta.js"></script>
+</body>
+</html>

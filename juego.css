@@ -1,0 +1,239 @@
+/* Juego "¿Cuánto me conoces?" (juego.html). Lo general está en comun.css */
+
+main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+}
+
+.vista {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  animation: aparecer .6s ease both;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+}
+
+.flotando {
+  animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  50% { transform: translateY(-10px) rotate(-6deg); }
+}
+
+/* ---------- Marcador ---------- */
+.marcador {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+}
+
+.progreso {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+.vidas {
+  display: flex;
+  gap: .3rem;
+  font-size: 1.2rem;
+}
+
+.vidas .nueva {
+  animation: pop .5s ease;
+}
+
+@keyframes pop {
+  50% { transform: scale(1.6); }
+}
+
+.vidas-grandes {
+  font-size: 1.8rem;
+}
+
+/* ---------- Tarjeta de la pregunta ---------- */
+.tarjeta-pregunta {
+  width: 100%;
+  padding: 1.8rem 1.4rem;
+  background: rgba(255, 255, 255, .82);
+  border-radius: 24px;
+  box-shadow: 0 14px 34px rgba(91, 35, 56, .1);
+}
+
+.tarjeta-pregunta.cambio {
+  animation: aparecer .5s ease both;
+}
+
+.pregunta {
+  font-size: clamp(1.3rem, 4.5vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 1.4rem;
+}
+
+.opciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .85rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--texto);
+  background: #fff;
+  border: 2px solid #ffd6e2;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform .15s ease, border-color .2s ease, background .2s ease, opacity .3s ease;
+}
+
+.opcion:hover:not(:disabled) {
+  border-color: var(--rosa);
+  transform: translateY(-2px);
+}
+
+.opcion:disabled { cursor: default; }
+
+.letra {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+  background: #ffe3ec;
+  border-radius: 50%;
+}
+
+.opcion.correcta {
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b95, #e8336d);
+  border-color: transparent;
+}
+
+.opcion.correcta .letra {
+  color: #fff;
+  background: rgba(255, 255, 255, .25);
+}
+
+.opcion.incorrecta {
+  color: #a08a92;
+  background: #f4eef0;
+  border-color: #e6d8dd;
+  animation: sacudir .4s ease;
+}
+
+.opcion.apagada { opacity: .45; }
+
+@keyframes sacudir {
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.reaccion {
+  margin-top: 1.3rem;
+  padding-top: 1.2rem;
+  border-top: 2px dashed #ffd6e2;
+  animation: aparecer .4s ease both;
+}
+
+.reaccion-titulo {
+  font-family: 'Dancing Script', 'Segoe Script', cursive;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--rosa-oscuro);
+}
+
+.reaccion-dato {
+  margin-top: .3rem;
+  line-height: 1.55;
+}
+
+/* ---------- Resultado ---------- */
+.puntaje {
+  font-size: clamp(3rem, 12vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rosa-oscuro);
+}
+
+.mensaje-resultado {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  max-width: 34ch;
+}
+
+.cierre-juego {
+  font-family: 'Dancing Script', 'Segoe Script', cursive;
+  font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+  line-height: 1.3;
+  max-width: 24ch;
+  color: var(--rosa-oscuro);
+}
+
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+}
+
+.boton-secundario {
+  padding: .4rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--texto-suave);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Corazoncitos que salen al atinarle */
+.chispa {
+  position: fixed;
+  z-index: 30;
+  font-size: 1.3rem;
+  pointer-events: none;
+  animation: estallar .9s ease-out forwards;
+}
+
+@keyframes estallar {
+  from { transform: translate(-50%, -50%) scale(.4); opacity: 1; }
+  to   { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.1); opacity: 0; }
+}
+
+@media (max-width: 560px) {
+  .opciones { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vista, .tarjeta-pregunta.cambio, .reaccion, .flotando, .opcion.incorrecta, .vidas .nueva { animation: none; }
+}
