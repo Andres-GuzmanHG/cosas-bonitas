@@ -14,14 +14,12 @@
     $("#carta-cuerpo").append(p);
   });
   $("#carta-despedida").textContent = conNombre(datos.despedida);
-  $("#carta-firma").textContent = conNombre(datos.firma);
 
   // Cada renglón se va a escribir poco a poco, en orden
   const segmentos = [
     $("#carta-saludo"),
     ...document.querySelectorAll("#carta-cuerpo p"),
     $("#carta-despedida"),
-    $("#carta-firma"),
   ].filter((el) => el.textContent.trim());
 
   // ---------- Abrir el sobre ----------

@@ -176,7 +176,6 @@
   function despedida() {
     $("#titulo-final").textContent = conNombre(C.tituloFinal || "Gracias por existir ✨");
     $("#mensaje-final").textContent = conNombre(C.mensajeFinal);
-    $("#firma").textContent = conNombre(C.firma);
 
     mostrar("final");
     ritmo(160);

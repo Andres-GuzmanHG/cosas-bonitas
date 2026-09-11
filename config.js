@@ -23,8 +23,7 @@ const CONFIG = {
       "No soy muy bueno diciendo estas cosas en persona, así que hice lo que mejor sé hacer: programar. Cada línea de esto es para ti.",
       "Te preparé algunas cosas. Solo sigue adelante...",
     ],
-    despedida: "Con mucho cariño,",
-    firma: "Tu programador favorito 💻",
+    despedida: "Con mucho cariño 💖",
   },
 
   // ─────────────── Parte 2: juego (juego.html) ───────────────
@@ -108,5 +107,4 @@ const CONFIG = {
   tituloFinal: "Gracias por existir ✨",
   mensajeFinal:
     "Nunca cambies, {nombre}. El mundo es mejor contigo en él, y el mío también 💖",
-  firma: "— Tu programador favorito 💻",
 };
